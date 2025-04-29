@@ -2,6 +2,52 @@
 
 A collection of cursor rules I bring in to many projects
 
+## Quick start
+
+### Add to your shell profile
+
+Add this function to your `~/.zprofile`, `~/.profile`, or `~/.zshrc`:
+
+```bash
+function install-cursor-rules() {
+  # Create .cursor/rules directory if it doesn't exist
+  mkdir -p .cursor/rules
+
+  # Download the repository as a zip file
+  # Create a temporary directory
+  TEMP_DIR=$(mktemp -d)
+  curl -L https://github.com/jhgaylor/cursorrules/archive/main.zip -o $TEMP_DIR/cursorrules.zip
+
+  # Extract the zip file
+  unzip -q $TEMP_DIR/cursorrules.zip -d $TEMP_DIR
+
+  # Copy the rules to the current project
+  cp $TEMP_DIR/cursorrules-main/rules/* .cursor/rules/
+
+  # Clean up
+  rm -rf $TEMP_DIR
+
+  echo "Cursor rules installed successfully to .cursor/rules/"
+}
+```
+
+After adding the function, remember to reload your profile:
+```bash
+# For ~/.zprofile or ~/.profile
+source ~/.zprofile  # or source ~/.profile
+
+# For ~/.zshrc
+source ~/.zshrc
+```
+
+### Install rules in your project
+
+Navigate to the root of your project directory and run:
+
+```bash
+install-cursor-rules
+```
+
 ## Usage
 
 To use these cursor rules in your project:
