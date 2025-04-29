@@ -48,6 +48,8 @@ Navigate to the root of your project directory and run:
 install-cursor-rules
 ```
 
+This will install the cursor rules into your current project directory. After running the command, you'll have the rules in `./.cursor/rules`
+
 ## Usage
 
 To use these cursor rules in your project:
